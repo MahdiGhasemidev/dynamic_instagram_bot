@@ -8,11 +8,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 ACCOUNTS_FILE = "data/accounts.json"
 COOKIES_DIR = "data/cookies"
 
-# ایجاد پوشه کوکی‌ها اگر وجود ندارد
 os.makedirs(COOKIES_DIR, exist_ok=True)
-
-
-# ========================= LOAD ACCOUNTS =========================
 
 def load_accounts():
     with open(ACCOUNTS_FILE, "r", encoding="utf-8") as f:
@@ -25,8 +21,6 @@ def load_accounts():
     else:
         raise ValueError("❌ ساختار فایل accounts.json صحیح نیست.")
 
-
-# ========================= CHOOSE ACCOUNT =========================
 
 def choose_account(accounts):
     print("accounts:\n")
@@ -41,8 +35,6 @@ def choose_account(accounts):
     return accounts[index]
 
 
-# ========================= CREATE DRIVER =========================
-
 def create_driver():
     options = webdriver.ChromeOptions()
     options.add_argument("--start-maximized")
@@ -54,8 +46,6 @@ def create_driver():
     return driver
 
 
-# ========================= OPEN BROWSER & SAVE COOKIES =========================
-
 def open_browser_and_save_cookies_for(account):
     username = account["username"]
 
@@ -65,7 +55,6 @@ def open_browser_and_save_cookies_for(account):
     print(f"\nChrome is now running for {username}. Please log in manually...")
     input("👉 After you finish login, press ENTER here to save cookies... ")
 
-    # گرفتن کوکی‌ها
     cookies = driver.get_cookies()
 
     cookie_file = os.path.join(COOKIES_DIR, f"{username}_cookies.json")
@@ -81,8 +70,6 @@ def open_browser_and_save_cookies_for(account):
     time.sleep(2)
     driver.quit()
 
-
-# ========================= MAIN =========================
 
 if __name__ == "__main__":
     accounts = load_accounts()
