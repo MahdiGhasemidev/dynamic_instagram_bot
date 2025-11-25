@@ -1,0 +1,14 @@
+{
+  "accounts": [
+    {
+      "username": "alinazari9491",
+      "password": "ali123nazari",
+      "email": "alinazaritesting@gmail.com"
+    },
+    {
+      "username": "ali_dev",
+      "password": "ali_pass",
+      "email": "ali@example.com"
+    }
+  ]
+}
